@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { v4 } from 'uuid';
 import { store } from "../../Redux/Actions/actions";
 import { TodoList } from "../TodoList/todoList";
-
+import { todoAdd } from '../../Redux/Reducers/todoReducer';
 
 export function Filters() {
 
@@ -18,14 +18,13 @@ export function Filters() {
         }
 
         console.log('Submit', value);
-        store.dispatch({
-            type: 'ADD_TODO',
-            payload: { 
-                    id: v4(),
-                    content: value,
-                    status: 'todo'
-                 }
-        });
+        store.dispatch(
+            todoAdd({ 
+                id: v4(),
+                content: value,
+                status: 'todo',
+            }),
+        );
 
         document.getElementById('form-todo-id').reset();
     };
