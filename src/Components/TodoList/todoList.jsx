@@ -1,10 +1,10 @@
-import React from 'react'
-import { Todo } from '../Todo/todo'
+import React from 'react';
+import { Todo } from '../Todo/todo';
 import { useSelector } from 'react-redux';
 
 const todoSelector = (state) => {
-    console.log('Current state:', state);
-    return state;
+    console.log('Todo from todolist:', state);
+    return state.todos;
 }
 
 export const TodoList = () => {
