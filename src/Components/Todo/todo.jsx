@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { store } from '../../Redux/Actions/actions';
+import { todoUpdate } from '../../Redux/Reducers/todoReducer';
 
 export const Todo = (props) => {
     // const [status, setStatus] = useState('todo');
@@ -17,13 +18,15 @@ export const Todo = (props) => {
             newStatus = 'todo';
         }
 
-        store.dispatch({
-            type: 'UPDATE_TODO',
-            payload: {
-                id: props.id,
-                status: newStatus,
-            }
-        })
+        store.dispatch(
+            todoUpdate({
+                type: 'UPDATE_TODO',
+                payload: {
+                    id: props.id,
+                    status: newStatus,
+                }
+            })
+        );
     }
 
     return (
@@ -33,7 +36,7 @@ export const Todo = (props) => {
                 style={{
                     fontSize: '1.2rem',
                     lineHeight: '2rem',
-                    color: '#fff',
+                    color: '#333',
                     textDecorationLine: props.status==='completed' ? 'line-through' : 'none'
                 }}
             >
