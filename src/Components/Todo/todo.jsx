@@ -20,11 +20,8 @@ export const Todo = (props) => {
 
         store.dispatch(
             todoUpdate({
-                type: 'UPDATE_TODO',
-                payload: {
-                    id: props.id,
-                    status: newStatus,
-                }
+                id: props.id,
+                status: newStatus,
             })
         );
     }
